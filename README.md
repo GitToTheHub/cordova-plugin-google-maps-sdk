@@ -3,7 +3,8 @@
 [![npm - Latest](https://img.shields.io/npm/v/cordova-plugin-google-maps-sdk/latest?label=Latest%20Release%20(npm))](https://npmjs.com/package/cordova-plugin-google-maps-sdk)
 [![GitHub](https://img.shields.io/github/package-json/v/GitToTheHub/cordova-plugin-google-maps-sdk?label=Development%20(Git))](https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk)
 
-*This is the successor of [cordova-plugin-googlemaps](https://github.com/mapsplugin/cordova-plugin-googlemaps).*
+> [!NOTE]
+> This is the successor of the obsoleted [cordova-plugin-googlemaps](https://github.com/mapsplugin/cordova-plugin-googlemaps)
 
 This plugin allows you to display a native Google Maps layer with the Google Maps SDK in your application and uses the following libraries:
 
