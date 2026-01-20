@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-googlemaps-2",
+  "name": "cordova-plugin-google-maps-sdk",
   "version": "2.9.3-dev",
   "description": "Google Maps native SDK for Android and iOS, and Google Maps JavaScript API v3 for browser.",
   "cordova": {
-    "id": "cordova-plugin-googlemaps-2",
+    "id": "cordova-plugin-google-maps-sdk",
     "platforms": [
       "android",
       "ios",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GitToTheHub/cordova-plugin-googlemaps-2.git"
+    "url": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git"
   },
   "keywords": [
     "google",
@@ -47,9 +47,9 @@
   "author": "Masashi Katsumata, Hirbod Mirjavadi",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/GitToTheHub/cordova-plugin-googlemaps-2/issues"
+    "url": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues"
   },
-  "homepage": "https://github.com/GitToTheHub/cordova-plugin-googlemaps-2",
+  "homepage": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk",
   "devDependencies": {
     "cordova-js": "^4.2.4",
     "eslint": "^5.7.0",

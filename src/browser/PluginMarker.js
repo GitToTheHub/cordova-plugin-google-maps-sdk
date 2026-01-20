@@ -1,8 +1,8 @@
 
 var utils = require('cordova/utils'),
-  event = require('cordova-plugin-googlemaps-2.event'),
-  BaseClass = require('cordova-plugin-googlemaps-2.BaseClass'),
-  LatLng = require('cordova-plugin-googlemaps-2.LatLng');
+  event = require('cordova-plugin-google-maps-sdk.event'),
+  BaseClass = require('cordova-plugin-google-maps-sdk.BaseClass'),
+  LatLng = require('cordova-plugin-google-maps-sdk.LatLng');
 
 function PluginMarker(pluginMap) {
   var self = this;

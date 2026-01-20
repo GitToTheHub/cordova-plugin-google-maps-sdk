@@ -1,7 +1,7 @@
 
 var utils = require('cordova/utils'),
-  event = require('cordova-plugin-googlemaps-2.event'),
-  BaseClass = require('cordova-plugin-googlemaps-2.BaseClass');
+  event = require('cordova-plugin-google-maps-sdk.event'),
+  BaseClass = require('cordova-plugin-google-maps-sdk.BaseClass');
 
 function displayGrayMap(container) {
   var gmErrorContent = document.querySelector('.gm-err-container');

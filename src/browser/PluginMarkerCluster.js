@@ -1,10 +1,10 @@
 
 var utils = require('cordova/utils'),
-  event = require('cordova-plugin-googlemaps-2.event'),
-  PluginMarker = require('cordova-plugin-googlemaps-2.PluginMarker'),
-  Thread = require('cordova-plugin-googlemaps-2.Thread'),
-  LatLng = require('cordova-plugin-googlemaps-2.LatLng'),
-  BaseArrayClass = require('cordova-plugin-googlemaps-2.BaseArrayClass');
+  event = require('cordova-plugin-google-maps-sdk.event'),
+  PluginMarker = require('cordova-plugin-google-maps-sdk.PluginMarker'),
+  Thread = require('cordova-plugin-google-maps-sdk.Thread'),
+  LatLng = require('cordova-plugin-google-maps-sdk.LatLng'),
+  BaseArrayClass = require('cordova-plugin-google-maps-sdk.BaseArrayClass');
 
 var STATUS = {
   'WORKING': 0,

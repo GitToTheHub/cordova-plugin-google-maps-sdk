@@ -62,7 +62,7 @@
 - Use Metal renderer also for simulator instead of OpenGL
 - Remove WebKit redraw hack
   - Removed `document.body.style.transform = 'rotateZ(0deg)';` from `Map.js` from `Map.refreshLayout` and `Map.setDiv`, which was used to for force WebKit browsers to perform a repaint/redraw, because in older WebKit browsers (Safari, early Chrome), certain DOM manipulations or CSS changes wouldn't trigger a visual update immediately, causing rendering glitches or elements appearing "stuck" in their old positions.
-  - This fix is no longer needed in modern WebKit Browsers and caused issues on Chrome on Android, see https://github.com/GitToTheHub/cordova-plugin-googlemaps-2/issues/19
+  - This fix is no longer needed in modern WebKit Browsers and caused issues on Chrome on Android, see https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues/19
 
 ## Version 2.8.1 (05.07.2025)
 
@@ -75,7 +75,7 @@
 
 ### Browser
 - feat: option to add mapId when using browser maps: Since Google Maps pricing already includes the SKU: [Dynamic Maps (with or without a map ID using the Maps JavaScript API)](https://developers.google.com/maps/billing-and-pricing/sku-details#dynamic-maps-ess-sku), and with the latest JS SDK the plugin’s tilt option doesn’t work because [WebGL (Vector maps) requires a map ID](https://developers.google.com/maps/documentation/javascript/map-ids/mapid-over), users should have the option to include one. Thanks to [leyenda](https://github.com/leyenda).
-- fix: browser cluster icon opacity: Eliminates the conflicting pull on iconMarker's opacity and establishes a clear path for opacity changes originating from self [PR #11](https://github.com/GitToTheHub/cordova-plugin-googlemaps-2/pull/11). Thanks to [leyenda](https://github.com/leyenda).
+- fix: browser cluster icon opacity: Eliminates the conflicting pull on iconMarker's opacity and establishes a clear path for opacity changes originating from self [PR #11](https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/pull/11). Thanks to [leyenda](https://github.com/leyenda).
 
 ## Version 2.8.0 (24.03.2025)
 

@@ -1,6 +1,6 @@
 
 
-var BaseArrayClass = require('cordova-plugin-googlemaps-2.BaseArrayClass');
+var BaseArrayClass = require('cordova-plugin-google-maps-sdk.BaseArrayClass');
 
 var service = null;
 var lastRequestTime = 0;

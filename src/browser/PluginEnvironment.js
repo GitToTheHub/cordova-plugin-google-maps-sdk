@@ -11,7 +11,7 @@ module.exports = {
   },
   'getLicenseInfo': function(onSuccess) {
     // stub
-    onSuccess('cordova-plugin-googlemaps-2 for browser does not need to display any open source lincenses. But for iOS, you still need to display the lincense.');
+    onSuccess('cordova-plugin-google-maps-sdk for browser does not need to display any open source lincenses. But for iOS, you still need to display the lincense.');
   },
   'setEnv': function(onSuccess, onError, args) {
     var options = args[0];
