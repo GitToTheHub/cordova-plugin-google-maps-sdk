@@ -1,6 +1,36 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-google-maps-sdk" version="2.9.3-dev" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+<plugin id="cordova-plugin-google-maps-sdk"
+  version="2.9.3-dev"
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
   <name>cordova-plugin-google-maps-sdk</name>
+  <description>
+    Use the native Google Maps SDK in a Cordova application, which is faster, more powerful,
+    and feels more natural for mobile applications. You can control the native Google Maps view
+    through this plugin's API. This plugin works in browser application as well.
+    One code for Android, iOS, and browsers.
+  </description>
+  <repo>https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git</repo>
+  <issue>https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues</issue>
+  <author>Masashi Katsumata, Hirbod, Manuel Beck</author>
+  <license>Apache-2.0</license>
+  <keywords>cordova,plugin,google,maps,sdk,geo</keywords>
+
+  <!--
+    Cordova related dependencies
+    The have to be kept in sync with package.json's "cordovaDependencies" field,
+    as long as the "engines" tag is not obsoleted by Cordova.
+    See: https://cordova.apache.org/docs/en/latest/guide/hybrid/plugins/index.html#adding-engine-requirements
+  -->
+  <engines>
+    <engine name="cordova" version=">=12.0.0"/>
+    <engine name="cordova-android" version=">=13.0.0"/>
+    <engine name="cordova-ios" version=">=7.0.0"/>
+  </engines>
+
+  <!-- common js modules -->
   <js-module name="Promise" src="www/Promise.js" />
   <js-module name="BaseClass" src="www/BaseClass.js">
     <runs/>
@@ -117,19 +147,6 @@
     <runs/>
   </js-module>
 
-  <description>You can display native Google Maps views in cordova application. Native Google Maps view is faster, powerful, and more friendly for mobile applications. You can control the native Google Maps view through this plugin API.
-
-  This plugin works in browser application as well. One code for Android, iOS, and browsers!
-  </description>
-  <repo>https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git</repo>
-  <issue>https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues</issue>
-  <author>Masashi Katsumata, Hirbod</author>
-
-  <license>Apache-2.0</license>
-
-  <keywords>google,maps,geo</keywords>
-
-  <!-- android -->
   <platform name="android">
     <js-module name="googlemaps-cdv-plugin" src="www/plugin-loader-for-android_ios.js">
       <clobbers target="plugin.google.maps"/>
