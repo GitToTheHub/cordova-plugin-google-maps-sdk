@@ -505,7 +505,7 @@
         <source url="https://github.com/CocoaPods/Specs.git"/>
       </config>
       <pods>
-        <pod name="GoogleMaps" spec="~> 10.6.0"/>
+        <pod name="GoogleMaps" spec="~> 10.7.0"/>
       </pods>
     </podspec>
 

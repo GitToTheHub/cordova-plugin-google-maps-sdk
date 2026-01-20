@@ -7,7 +7,7 @@ This plugin allows you to display a native Google Maps layer with the Google Map
 | Platform  | Library | Version |
 | :-------- | :------ | :------ |
 | `android` | [Google Maps SDK for Android](https://developers.google.com/maps/documentation/android-sdk/) | `com.google.android.gms:play-services-maps:19.0.0` and `com.google.android.gms:play-services-location:21.3.0` |
-| `ios`     | [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/) | [10.6.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#November_20_2025) |
+| `ios`     | [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/) | [10.7.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#December_18_2025) |
 | `browser` |[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) | `V3` |
 
 ## Why using Google Maps SDK instead of Google Maps JavaScript API?

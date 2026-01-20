@@ -10,7 +10,7 @@
 
 ### iOS
 
-- Update Google Maps SDK from 10.4.0 to 10.6.0
+- Update Google Maps SDK from 10.4.0 to 10.7.0
   - You need to do a `pod repo update` in `platforms/ios` before updating the plugin
   - Fixes:
     - QoS (Quality of Service) Inversion Warning fixed.
