@@ -1,6 +1,6 @@
 # ChangeLog
 
-## Version 2.9.3-dev
+## Version 2.9.3
 
 ### Common
 
