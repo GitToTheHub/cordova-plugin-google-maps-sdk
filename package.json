@@ -15,14 +15,15 @@
     "url": "git+https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git"
   },
   "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
     "google",
     "maps",
     "geo",
     "google maps",
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios",
-    "cordova-browser"
+    "google maps sdk"
   ],
   "engines": {
     "cordovaDependencies": {
