@@ -376,7 +376,7 @@ You can write your code `similar to` the Google Maps JavaScript API v3.
 
 **Feature comparison table**
 
-|                | Google Maps JavaScript API v3     | Cordova-Plugin-GoogleMaps(Android,iOS)| Cordova-Plugin-GoogleMaps(Browser)    |
+|                | Google Maps JavaScript API v3     | cordova-plugin-google-maps-sdk (Android,iOS)| cordova-plugin-google-maps-sdk (Browser) |
 |----------------|-----------------------------------|---------------------------------------|---------------------------------------|
 |Rendering system| JavaScript + HTML                 | JavaScript + Native API's             | JavaScript                            |
 |Offline map     | Not possible                      | Possible (only your displayed area)   | Not possible                          |
@@ -386,7 +386,7 @@ You can write your code `similar to` the Google Maps JavaScript API v3.
 
 **Class comparison table**
 
-| Google Maps JavaScript API v3     | Cordova-Plugin-GoogleMaps             |
+| Google Maps JavaScript API v3     | cordova-plugin-google-maps-sdk        |
 |-----------------------------------|---------------------------------------|
 | google.maps.Map                   | Map                                   |
 | google.maps.Marker                | Marker                                |
