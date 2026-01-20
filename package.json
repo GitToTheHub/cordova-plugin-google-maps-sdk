@@ -10,7 +10,10 @@
       "browser"
     ]
   },
-  "repository": "github:GitToTheHub/cordova-plugin-google-maps-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git"
+  },
   "bugs": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues",
   "keywords": [
     "cordova",
