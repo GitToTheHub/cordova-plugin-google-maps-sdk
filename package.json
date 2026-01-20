@@ -10,10 +10,8 @@
       "browser"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git"
-  },
+  "repository": "github:GitToTheHub/cordova-plugin-google-maps-sdk",
+  "bugs": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues",
   "keywords": [
     "cordova",
     "ecosystem:cordova",
@@ -25,6 +23,13 @@
     "google maps",
     "google maps sdk"
   ],
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint ."
+  },
+  "author": "Masashi Katsumata, Hirbod Mirjavadi, Manuel Beck",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk",
   "engines": {
     "cordovaDependencies": {
       "2.7.0": {
@@ -39,25 +44,11 @@
       }
     }
   },
-  "scripts": {
-    "test": "npm run lint",
-    "lint": "eslint ."
-  },
-  "author": "Masashi Katsumata, Hirbod Mirjavadi",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues"
-  },
-  "homepage": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk",
   "devDependencies": {
     "@cordova/eslint-config": "^5.1.0"
   },
-  "dependencies": {
-    "cordova-common": "^3.1.0"
-  },
-  "main": ".eslintrc.js",
-  "directories": {
-    "test": "tests"
+  "eslintConfig": {
+    "extends": "@cordova/eslint-config/node"
   },
   "type": "commonjs"
 }
