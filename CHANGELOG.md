@@ -6,6 +6,7 @@
 
 - Rename project to `cordova-plugin-google-maps-sdk`
   - This makes clear, what this plugin is about and maybe it's better not to have a number in the plugin name like it was before: `cordova-plugin-googlemaps-2`
+- Rename documentation repository from `cordova-plugin-googlemaps-doc` to `cordova-plugin-google-maps-sdk-doc` to be better synchron with this repository
 
 ### iOS
 
