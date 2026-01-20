@@ -1,4 +1,7 @@
-# Google Maps SDK plugin for Cordova - Version 2.9.4-dev
+# Cordova Google Maps SDK Plugin - Version 2.9.4-dev
+
+[![npm - Latest](https://img.shields.io/npm/v/cordova-plugin-google-maps-sdk/latest?label=Latest%20Release%20(npm))](https://npmjs.com/package/cordova-plugin-google-maps-sdk)
+[![GitHub](https://img.shields.io/github/package-json/v/GitToTheHub/cordova-plugin-google-maps-sdk?label=Development%20(Git))](https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk)
 
 *This is the successor of [cordova-plugin-googlemaps](https://github.com/mapsplugin/cordova-plugin-googlemaps).*
 
