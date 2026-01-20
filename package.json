@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git"
+    "url": "git+https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk.git"
   },
   "keywords": [
     "google",
@@ -57,5 +57,10 @@
   },
   "dependencies": {
     "cordova-common": "^3.1.0"
-  }
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "type": "commonjs"
 }
