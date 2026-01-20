@@ -2,6 +2,11 @@
 
 ## Version 2.9.3-dev
 
+### Common
+
+- Rename project to `cordova-plugin-google-maps-sdk`
+  - This makes clear, what this plugin is about and maybe it's better not to have a number in the plugin name like it was before: `cordova-plugin-googlemaps-2`
+
 ### iOS
 
 - Update Google Maps SDK from 10.4.0 to 10.6.0
