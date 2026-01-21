@@ -5,7 +5,7 @@
   xmlns="http://apache.org/cordova/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <name>cordova-plugin-google-maps-sdk</name>
+  <name>Google Maps SDK</name>
   <description>
     Use the native Google Maps SDK in a Cordova application, which is faster, more powerful,
     and feels more natural for mobile applications. You can control the native Google Maps view
