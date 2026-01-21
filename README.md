@@ -40,11 +40,27 @@ You can read more about here [What is the difference between this plugin and Goo
 
 ## Installation
 
+### NPM
+
+You can install form NPM since version 2.9.3.
+
+#### Latest Version
+
+```bash
+cordova plugin add cordova-plugin-google-maps-sdk
+```
+
+#### Specific Version
+
+```bash
+cordova plugin add cordova-plugin-google-maps-sdk#2.9.3
+```
+
 ### GitHub
 
-#### Latest version
+#### Latest Master
 
-To install the latest master:
+You can install directly from GitHub, when you need the latest updates:
 
 ```bash
 cordova plugin add https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk
@@ -52,7 +68,7 @@ cordova plugin add https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk
 
 #### Specific Version
 
-To install a specific version you can use git tags. Example for installing version `2.9.0`:
+You can install a specific version from GitHub if you need a version older than 2.9.3 which was not published on NPM:
 
 ```bash
 cordova plugin add https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk#v2.9.0
