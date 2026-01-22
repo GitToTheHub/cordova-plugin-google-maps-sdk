@@ -115,7 +115,7 @@ Remove also the follwoing from the `package-lock.json`:
 After that, you can add this plugin:
 
 ```bash
-cordova plugin add https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk
+cordova plugin add cordova-plugin-google-maps-sdk
 ```
 
 If you get a CocoaPod error, that a compatible version for GoogleMaps couldn't be found:
