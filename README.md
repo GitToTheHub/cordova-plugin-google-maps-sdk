@@ -10,7 +10,7 @@ This plugin allows you to display a native Google Maps layer with the Google Map
 
 | Platform  | Library | Version |
 | :-------- | :------ | :------ |
-| `android` | [Google Maps SDK for Android](https://developers.google.com/maps/documentation/android-sdk/) | `com.google.android.gms:play-services-maps:19.0.0` and `com.google.android.gms:play-services-location:21.3.0` |
+| `android` | [Google Maps SDK for Android](https://developers.google.com/maps/documentation/android-sdk/) | Google Maps SDK for Android:<br>[com.google.android.gms:play-services-maps:20.0.0](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)<br>Location SDK:<br>[com.google.android.gms:play-services-location:21.3.0](https://developers.google.com/android/guides/releases?hl=de#may_29_2024)<br>For accessing the device's location  |
 | `ios`     | [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/) | [10.7.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#December_18_2025) |
 | `browser` |[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) | `V3` |
 
@@ -167,7 +167,7 @@ var map = plugin.google.maps.Map.getMap(div);
 ### Optional variables to be set in `config.xml`
 
 #### Android
-- `GOOGLE_MAPS_PLAY_SERVICES_VERSION`: Defaults to `19.0.0`
+- `GOOGLE_MAPS_PLAY_SERVICES_VERSION`: Defaults to `20.0.0`
 - `GOOGLE_MAPS_PLAY_SERVICES_LOCATION_VERSION`: Defaults to `21.3.0`
 
 #### iOS

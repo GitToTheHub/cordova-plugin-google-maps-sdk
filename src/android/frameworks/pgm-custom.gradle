@@ -46,8 +46,8 @@ android {
   // Set default versions for play-services-maps and play-services-location
   //
   // Google Maps SDK for Android: com.google.android.gms:play-services-maps
-  // Version from 25.06.2024
-  props.setProperty("GOOGLE_MAPS_PLAY_SERVICES_VERSION", "19.0.0");
+  // Version from 14.01.2026
+  props.setProperty("GOOGLE_MAPS_PLAY_SERVICES_VERSION", "20.0.0");
   // Location Services for Android: com.google.android.gms:play-services-location
   // Version from 29.05.2024
   props.setProperty("GOOGLE_MAPS_PLAY_SERVICES_LOCATION_VERSION", "21.3.0");

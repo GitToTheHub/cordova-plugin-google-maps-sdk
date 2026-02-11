@@ -2,6 +2,11 @@
 
 ## Version 2.9.4-dev
 
+### Android
+
+- Updated Google Maps SDK from 19.0.0 to 20.0.0
+  - [Version from 14.01.2026](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)
+
 ## Version 2.9.3
 
 ### Common
