@@ -61,27 +61,6 @@ public class PluginTileOverlay extends MyPlugin implements MyPluginInterface {
             //e.printStackTrace();
           }
         }
-        if ("".equals(userAgent)) {
-          View browserView = webView.getView();
-          String browserViewName = browserView.getClass().getName();
-          if ("org.xwalk.core.XWalkView".equals(browserViewName) ||
-              "org.crosswalk.engine.XWalkCordovaView".equals(browserViewName)) {
-
-            CordovaPreferences preferences = webView.getPreferences();
-            // Set xwalk webview settings by Cordova preferences.
-            String xwalkUserAgent = preferences == null ? "" : preferences.getString("xwalkUserAgent", "");
-            if (!xwalkUserAgent.isEmpty()) {
-              userAgent = xwalkUserAgent;
-            }
-
-            String appendUserAgent = preferences.getString("AppendUserAgent", "");
-            if (!appendUserAgent.isEmpty()) {
-              userAgent = userAgent + " " + appendUserAgent;
-            }
-          } else {
-            userAgent = ((WebView) webView.getEngine().getView()).getSettings().getUserAgentString();
-          }
-        }
 
         String currentPageUrl = webView.getUrl();
 

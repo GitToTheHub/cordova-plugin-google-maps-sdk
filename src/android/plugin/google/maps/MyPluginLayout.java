@@ -153,9 +153,6 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
     mActivity = activity;
     ViewGroup root = (ViewGroup) browserView.getParent();
     this.context = browserView.getContext();
-    //if (Build.VERSION.SDK_INT >= 21 || "org.xwalk.core.XWalkView".equals(browserView.getClass().getName())) {
-    //  browserView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-    //}
 
     zoomScale = Resources.getSystem().getDisplayMetrics().density;
     Log.e(TAG, "--> zoomScale = " + zoomScale);
@@ -186,21 +183,6 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
     this.addView(frontLayer);
     root.addView(this);
     browserView.setBackgroundColor(Color.TRANSPARENT);
-    /*
-    if("org.xwalk.core.XWalkView".equals(browserView.getClass().getName())
-      || "org.crosswalk.engine.XWalkCordovaView".equals(browserView.getClass().getName())) {
-      try {
-    // view.setZOrderOnTop(true)
-    // Called just in time as with root.setBackground(...) the color
-    // come in front and take the whole screen
-        browserView.getClass().getMethod("setZOrderOnTop", boolean.class)
-          .invoke(browserView, true);
-      }
-      catch(Exception e) {
-        e.printStackTrace();
-      }
-    }
-    */
     scrollView.setHorizontalScrollBarEnabled(false);
     scrollView.setVerticalScrollBarEnabled(false);
     startTimer();

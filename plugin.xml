@@ -156,9 +156,6 @@
     </js-module>
 
     <config-file target="config.xml" parent="/*">
-      <!-- for Crosswalk -->
-      <preference name="xwalkZOrderOnTop" value="true"/>
-
       <!-- for this plugin -->
       <preference name="android-minSdkVersion" value="21"/>
     </config-file>
