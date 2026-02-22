@@ -11,6 +11,13 @@
   - [Version from 14.01.2026](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)
 - Renamed custom gradle file `pgm-custom.gradle`  to `google-maps-sdk-custom.gradle`
 
+### iOS
+
+- Fix: custom marker on local path
+  - Relative paths to app bundle like `url: "img/marker.png"` didn't work
+  - Support `app://localhost` for cordova-ios 8
+  - Suport relative paths for cordova-ios 7
+
 ## Version 2.9.3
 
 ### Common
