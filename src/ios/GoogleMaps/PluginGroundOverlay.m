@@ -160,9 +160,9 @@
 
 }
 
-- (void)_setImage:(GMSGroundOverlay *)groundOverlay urlStr:(NSString *)urlStr completionHandler:(void (^)(BOOL succeeded))completionHandler {
-
-
+- (void)_setImage:(GMSGroundOverlay *)groundOverlay
+           urlStr:(NSString *)urlStr
+completionHandler:(void (^)(BOOL succeeded))completionHandler {
     NSRange range = [urlStr rangeOfString:@"http"];
 
     if (range.location != 0) {
@@ -207,38 +207,26 @@
                   CDVViewController *cdvViewController = (CDVViewController*)self.viewController;
                   id webview = cdvViewController.webView;
                   dispatch_sync(dispatch_get_main_queue(), ^{
-                       NSURL *url = [webview URL];
-                       NSString *currentURL = url.absoluteString;
-                       if (![[url lastPathComponent] isEqualToString:@"/"]) {
-                         currentURL = [currentURL stringByDeletingLastPathComponent];
-                       }
+                      NSURL *url = [webview URL];
 
-                       // remove page unchor (i.e index.html#page=test, index.html?key=value)
-                       NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[#\\?].*$" options:NSRegularExpressionCaseInsensitive error:nil];
-                       currentURL = [regex stringByReplacingMatchesInString:currentURL options:0 range:NSMakeRange(0, [currentURL length]) withTemplate:@""];
+                      // Remove index.html at the end if exists
+                      if (![[url lastPathComponent] isEqualToString:@"/"]) {
+                        url = [url URLByDeletingLastPathComponent];
+                      }
+                      
+                      url = [url URLByAppendingPathComponent:urlStr];
+                       [PluginUtil downloadImageWithURL:url
+                                      cdvViewController:(CDVViewController *)self.viewController
+                                        completionBlock:^(BOOL succeeded, UIImage *image) {
+                           if (!succeeded) {
+                               completionHandler(NO);
+                               return;
+                           }
 
-                       // remove file name (i.e /index.html)
-                       regex = [NSRegularExpression regularExpressionWithPattern:@"\\/[^\\/]+\\.[^\\/]+$" options:NSRegularExpressionCaseInsensitive error:nil];
-                       currentURL = [regex stringByReplacingMatchesInString:currentURL options:0 range:NSMakeRange(0, [currentURL length]) withTemplate:@""];
-
-
-                       NSString *urlStr2 = [NSString stringWithFormat:@"%@/%@", currentURL, urlStr];
-                       urlStr2 = [urlStr2 stringByReplacingOccurrencesOfString:@":/" withString:@"://"];
-                       urlStr2 = [urlStr2 stringByReplacingOccurrencesOfString:@":///" withString:@"://"];
-                       url = [NSURL URLWithString:urlStr2];
-
-                       [self downloadImageWithURL:url  completionBlock:^(BOOL succeeded, UIImage *image) {
-
-                         if (!succeeded) {
-                           completionHandler(NO);
-                           return;
-                         }
-
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                           groundOverlay.icon = image;
-                           completionHandler(YES);
-                         });
-
+                           dispatch_async(dispatch_get_main_queue(), ^{
+                               groundOverlay.icon = image;
+                               completionHandler(YES);
+                           });
                        }];
                    });
                    return;
@@ -269,18 +257,18 @@
 
     } else {
         NSURL *url = [NSURL URLWithString:urlStr];
-        [self downloadImageWithURL:url  completionBlock:^(BOOL succeeded, UIImage *image) {
-
+        [PluginUtil downloadImageWithURL:url
+                       cdvViewController:(CDVViewController *)self.viewController
+                         completionBlock:^(BOOL succeeded, UIImage *image) {
             if (!succeeded) {
-              completionHandler(NO);
-              return;
+                completionHandler(NO);
+                return;
             }
-
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 groundOverlay.icon = image;
                 completionHandler(YES);
             });
-
         }];
     }
 }
@@ -493,91 +481,6 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
     }];
-}
-
-
-- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
-{
-  [self.mapCtrl.executeQueue addOperationWithBlock:^{
-
-    NSString *iconPath = url.absoluteString;
-
-    // Since ionic local server declines HTTP access for some reason,
-    // replace URL with file path
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *wwwPath = [mainBundle pathForResource:@"www/cordova" ofType:@"js"];
-    wwwPath = [wwwPath stringByReplacingOccurrencesOfString:@"/cordova.js" withString:@""];
-    if ([iconPath containsString:@"assets/"]) {
-      iconPath = [iconPath regReplace:@"^.*assets/" replaceTxt:[NSString stringWithFormat:@"%@/assets/", wwwPath] options:NSRegularExpressionCaseInsensitive];
-    }
-    // iconPath = [iconPath stringByReplacingOccurrencesOfString:wwwPath withString: @""];
-    
-    // ionic 4
-    iconPath = [iconPath stringByReplacingOccurrencesOfString:@"http://localhost:8080" withString: wwwPath];
-
-    // ionic 5
-    iconPath = [iconPath stringByReplacingOccurrencesOfString:@"ionic://localhost" withString: wwwPath];
-    
-    if ([iconPath hasPrefix:@"file://"] || [iconPath hasPrefix:@"/"]) {
-      iconPath = [iconPath stringByReplacingOccurrencesOfString:@"file://" withString:@""];
-      if (![iconPath hasPrefix:@"/"]) {
-        iconPath = [NSString stringWithFormat:@"/%@", iconPath];
-      }
-      NSFileManager *fileManager = [NSFileManager defaultManager];
-      if (![fileManager fileExistsAtPath:iconPath]) {
-        //if (self.mapCtrl.debuggable) {
-        NSLog(@"(error)There is no file at '%@'.", iconPath);
-        //}
-        //[self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
-        completionBlock(NO, nil);
-        return;
-      }
-
-      UIImage *image = [UIImage imageNamed:iconPath];
-      if (image) {
-        completionBlock(YES, image);
-        return;
-      }
-    }
-
-
-
-    NSURLRequest *req = [NSURLRequest requestWithURL:url
-                                         cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                     timeoutInterval:5];
-    NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:req];
-    if (cachedResponse != nil) {
-      UIImage *image = [[UIImage alloc] initWithData:cachedResponse.data];
-      if (image) {
-        completionBlock(YES, image);
-        return;
-      }
-    }
-
-
-    //-------------------------------------------------------------
-    // Use NSURLSessionDataTask instead of [NSURLConnection sendAsynchronousRequest]
-    // https://stackoverflow.com/a/20871647
-    //-------------------------------------------------------------
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-    NSURLSessionDataTask *getTask = [session dataTaskWithRequest:req
-                                               completionHandler:^(NSData *data, NSURLResponse *res, NSError *error) {
-                                                 [session finishTasksAndInvalidate];
-
-                                                 UIImage *image = [UIImage imageWithData:data];
-                                                 if (image) {
-                                                   completionBlock(YES, image);
-                                                   return;
-                                                 }
-
-                                                 completionBlock(NO, nil);
-
-                                               }];
-    [getTask resume];
-
-
-  }];
 }
 
 @end

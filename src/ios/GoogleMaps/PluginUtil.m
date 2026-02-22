@@ -505,4 +505,69 @@
   return MIN(MIN(latZoom, lngZoom), 21);
 }
 
++ (void)downloadImageWithURL:(NSURL *)url
+           cdvViewController:(CDVViewController *)cdvViewController
+             completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        BOOL isLocalhost = [url.host isEqualToString:@"localhost"];
+        
+        // Load local image for localhost or file:///
+        if (isLocalhost || [url.scheme isEqualToString:@"file"]) {
+            // For file urls this path is complete
+            // For localhost urls this relative to the app main bundle
+            NSString *iconPath = url.path;
+            
+            // Add www path to relative image path on localhost
+            if (isLocalhost) {
+                NSString *wwwPath = [[NSBundle mainBundle] pathForResource:@"www" ofType:@""];
+                iconPath = [wwwPath stringByAppendingPathComponent:iconPath];
+            }
+            
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            
+            if (![fileManager fileExistsAtPath:iconPath]) {
+                NSLog(@"(error)There is no file at '%@'.", iconPath);
+                completionBlock(NO, nil);
+                return;
+            }
+            
+            UIImage *image = [UIImage imageNamed:iconPath];
+            
+            if (image) {
+                completionBlock(YES, image);
+                return;
+            }
+        }
+
+        NSURLRequest *req = [NSURLRequest requestWithURL:url
+                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                         timeoutInterval:5];
+        NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:req];
+        if (cachedResponse != nil) {
+          UIImage *image = [[UIImage alloc] initWithData:cachedResponse.data];
+          if (image) {
+            completionBlock(YES, image);
+            return;
+          }
+        }
+
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+        NSURLSessionDataTask *getTask = [session dataTaskWithRequest:req
+                                                   completionHandler:^(NSData *data, NSURLResponse *res, NSError *error) {
+                                                     [session finishTasksAndInvalidate];
+
+                                                     UIImage *image = [UIImage imageWithData:data];
+                                                     if (image) {
+                                                       completionBlock(YES, image);
+                                                       return;
+                                                     }
+
+                                                     completionBlock(NO, nil);
+                                                   }];
+        [getTask resume];
+    }];
+}
+
 @end

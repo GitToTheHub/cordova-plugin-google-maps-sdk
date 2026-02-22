@@ -480,7 +480,6 @@
       </array>
     </config-file>
 
-
     <!--
       Google Maps SDK for iOS 10.0.0 needs minimum a deployment target of iOS 16
       This will only take effect, if the user does not specify the deployment target

@@ -60,6 +60,7 @@ typedef void (^MYCompletionHandler)(NSError *error);
 + (double)getZoomFromBounds:(GMSCoordinateBounds *)bounds mapWidth:(double)mapWidth mapHeight:(double)mapHeight;
 + (double)_zoom:(double)mapPx worldPx:(double)worldPx fraction:(double)fraction;
 + (double)_latRad:(double)lat;
++ (void)downloadImageWithURL:(NSURL *)url cdvViewController:(CDVViewController *)viewController completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
 @end
 
 
