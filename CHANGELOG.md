@@ -4,6 +4,9 @@
 
 ### Android
 
+- Fix: Load custom marker icons from `https://localhost`
+  - Only `http` was handled but not `https`
+  - Fixes [Issue #20](https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues/20)
 - Updated Google Maps SDK from 19.0.0 to 20.0.0
   - [Version from 14.01.2026](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)
 - Renamed custom gradle file `pgm-custom.gradle`  to `google-maps-sdk-custom.gradle`
