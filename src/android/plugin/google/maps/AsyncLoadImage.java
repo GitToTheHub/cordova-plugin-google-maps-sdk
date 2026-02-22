@@ -98,6 +98,14 @@ public class AsyncLoadImage extends AsyncTask<Void, Void, AsyncLoadImage.AsyncLo
     return image.copy(image.getConfig(), true);
   }
 
+  private static boolean isLocalhostAssetUrl(String url) {
+    return url != null && url.matches("^https?://(?:localhost|127\\.0\\.0\\.1)(?::\\d+)?(?:/.*)?$");
+  }
+
+  private static String convertLocalhostAssetUrl(String url) {
+    return url.replaceFirst("^https?://(?:localhost|127\\.0\\.0\\.1)(?::\\d+)?/?", "file:///android_asset/www/");
+  }
+
 
   @Override
   protected void onCancelled(AsyncLoadImageResult result) {
@@ -172,15 +180,8 @@ public class AsyncLoadImage extends AsyncTask<Void, Void, AsyncLoadImage.AsyncLo
     //--------------------------------
     if (!iconUrl.startsWith("data:image")) {
 
-      if (iconUrl.startsWith("http://localhost") ||
-          iconUrl.startsWith("http://127.0.0.1")) {
-//        Log.d(TAG, String.format("---->(201)iconURL = %s", iconUrl));
-        if (iconUrl.contains("://")) {
-          iconUrl = iconUrl.replaceAll("http://.+?/", "file:///android_asset/www/");
-        } else {
-          // Avoid WebViewLocalServer (because can not make a connection for some reason)
-          iconUrl = "file:///android_asset/www/".concat(iconUrl);
-        }
+      if (isLocalhostAssetUrl(iconUrl)) {
+        iconUrl = convertLocalhostAssetUrl(iconUrl);
       }
 
       if (!iconUrl.contains("://") &&
@@ -206,15 +207,8 @@ public class AsyncLoadImage extends AsyncTask<Void, Void, AsyncLoadImage.AsyncLo
         iconUrl = iconUrl.replaceAll("(\\/\\.\\/+)+", "/");
         //Log.d(TAG, "--> iconUrl = " + iconUrl);
       }
-      if (iconUrl.startsWith("http://localhost") ||
-              iconUrl.startsWith("http://127.0.0.1")) {
-//        Log.d(TAG, String.format("---->(201)iconURL = %s", iconUrl));
-        if (iconUrl.contains("://")) {
-          iconUrl = iconUrl.replaceAll("http://.+?/", "file:///android_asset/www/");
-        } else {
-          // Avoid WebViewLocalServer (because can not make a connection for some reason)
-          iconUrl = "file:///android_asset/www/".concat(iconUrl);
-        }
+      if (isLocalhostAssetUrl(iconUrl)) {
+        iconUrl = convertLocalhostAssetUrl(iconUrl);
       }
 
       if (iconUrl.indexOf("file://") == 0 &&
