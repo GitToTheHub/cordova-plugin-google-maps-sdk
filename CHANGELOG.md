@@ -13,10 +13,8 @@
 
 ### iOS
 
-- Fix: custom marker on local path
-  - Relative paths to app bundle like `url: "img/marker.png"` didn't work
-  - Support `app://localhost` for cordova-ios 8
-  - Suport relative paths for cordova-ios 7
+- Fix: Load custom marker icons from `app://localhost`
+  - Works only if `hostname` is not something different than `localhost` in `config.xml`
 
 ## Version 2.9.3
 
