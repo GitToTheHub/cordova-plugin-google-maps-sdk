@@ -10,8 +10,8 @@ This plugin allows you to display a native Google Maps layer with the Google Map
 
 | Platform  | Library | Minimum Requirements |
 | ---       | ---     | ---                  |
-| Android   | [Google Maps SDK for Android](https://developers.google.com/maps/documentation/android-sdk):<br>[com.google.android.gms:play-services-maps:20.0.0](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)<br>Location SDK:<br>[com.google.android.gms:play-services-location:21.3.0](https://developers.google.com/android/guides/releases?hl=de#may_29_2024)<br>For accessing the device's location  | [cordova-android 13](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)<br>Android 7.0<br> |
-| iOS       | [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/) Version [10.7.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#December_18_2025) | [cordova-ios 7.0.0](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)<br>iOS 16.0 |
+| Android   | [Google Maps SDK for Android](https://developers.google.com/maps/documentation/android-sdk):<br>[com.google.android.gms:play-services-maps:20.0.0](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)<br>Location SDK:<br>[com.google.android.gms:play-services-location:21.3.0](https://developers.google.com/android/guides/releases?hl=de#may_29_2024)<br>For accessing the device's location  | - [cordova-android 13](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)<br>- Android 7.0<br> |
+| iOS       | [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/) Version [10.8.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#January_27_2026) | - [cordova-ios 7.0.0](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)<br>- iOS 16.0<br>- XCode 26 |
 | Browser   |[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) | |
 
 ## Why using Google Maps SDK instead of Google Maps JavaScript API?

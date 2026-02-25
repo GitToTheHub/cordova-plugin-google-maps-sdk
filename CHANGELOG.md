@@ -15,6 +15,9 @@
 
 - Fix: Load custom marker icons from `app://localhost`
   - Works only if `hostname` is not something different than `localhost` in `config.xml`
+- Update Google Maps SDK from 10.7.0 to 10.8.0
+  - Requires minimum XCode 26
+  - SDK Changelog: https://developers.google.com/maps/documentation/ios-sdk/release-notes#January_27_2026
 
 ## Version 2.9.3
 
