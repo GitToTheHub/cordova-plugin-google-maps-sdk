@@ -346,29 +346,45 @@
         
         viewCtrl.view = viewCtrl.map;
 
-        //mapType
-        NSString *typeStr = [initOptions valueForKey:@"mapType"];
-        
-        if (typeStr) {
-            NSDictionary *mapTypes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      ^() {return kGMSTypeHybrid; }, @"MAP_TYPE_HYBRID",
-                                      ^() {return kGMSTypeSatellite; }, @"MAP_TYPE_SATELLITE",
-                                      ^() {return kGMSTypeTerrain; }, @"MAP_TYPE_TERRAIN",
-                                      ^() {return kGMSTypeNormal; }, @"MAP_TYPE_NORMAL",
-                                      ^() {return kGMSTypeNone; }, @"MAP_TYPE_NONE",
-                                      nil];
+        // mapType and styles
+        NSString *styles = [initOptions valueForKey:@"styles"];
 
-            typedef GMSMapViewType (^CaseBlock)(void);
-            GMSMapViewType mapType;
-            CaseBlock caseBlock = mapTypes[typeStr];
-            
-            if (caseBlock) {
-                // Change the map type
-                mapType = caseBlock();
+        if (styles) {
+            NSError *error;
+            GMSMapStyle *mapStyle =
+                [GMSMapStyle styleWithJSONString:styles error:&error];
 
+            if (mapStyle != nil) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    ((GMSMapView *)(viewCtrl.view)).mapType = mapType;
+                    ((GMSMapView *)viewCtrl.view).mapStyle = mapStyle;
                 }];
+            } else {
+                NSLog(@"Your specified map style is incorrect : %@",
+                      error.description);
+            }
+        } else {
+            NSString *typeStr = [initOptions valueForKey:@"mapType"];
+
+            if (typeStr) {
+                NSDictionary *mapTypes = @{
+                    @"MAP_TYPE_HYBRID"    : ^{ return kGMSTypeHybrid; },
+                    @"MAP_TYPE_SATELLITE" : ^{ return kGMSTypeSatellite; },
+                    @"MAP_TYPE_TERRAIN"   : ^{ return kGMSTypeTerrain; },
+                    @"MAP_TYPE_NORMAL"    : ^{ return kGMSTypeNormal; },
+                    @"MAP_TYPE_NONE"      : ^{ return kGMSTypeNone; }
+                };
+
+                typedef GMSMapViewType (^CaseBlock)(void);
+
+                CaseBlock caseBlock = mapTypes[typeStr];
+
+                if (caseBlock) {
+                    GMSMapViewType mapType = caseBlock();
+
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        ((GMSMapView *)viewCtrl.view).mapType = mapType;
+                    }];
+                }
             }
         }
         
