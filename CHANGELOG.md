@@ -18,7 +18,9 @@
 - Update Google Maps SDK from 10.7.0 to 10.8.0
   - Requires minimum XCode 26
   - SDK Changelog: https://developers.google.com/maps/documentation/ios-sdk/release-notes#January_27_2026
-
+- Fix: take styles option into account when initializing the map (PR [#21](https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/pull/21)) by @mcastets
+  - When using a custom style, map was first rendered with the default style and then redraw to apply the custom style option. Now, thanks to this fix, the styles option is taken into account during the initialization process.
+  - Side note: using a custom style prevent from using a different map type than default.
 ## Version 2.9.3
 
 ### Common
