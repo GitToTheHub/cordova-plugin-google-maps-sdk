@@ -1,6 +1,6 @@
 # ChangeLog
 
-## Version 2.9.4-dev
+## Version 3.0.0
 
 ### Android
 
