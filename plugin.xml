@@ -297,7 +297,7 @@
   </platform>
 
   <!-- ios -->
-  <platform name="ios">
+  <platform name="ios" package="swift">
 
     <preference name="LOCATION_WHEN_IN_USE_DESCRIPTION" default="This app wants to get your location while this app runs only."/>
     <preference name="LOCATION_ALWAYS_USAGE_DESCRIPTION" default="This app wants to get your location always, even this app runs in background."/>
@@ -484,7 +484,8 @@
       Google Maps SDK for iOS 10.0.0 needs minimum a deployment target of iOS 16
       This will only take effect, if the user does not specify the deployment target
       in the config.xml.
-      If the deployment target is lower, there will be an error when adding this plugin:
+      If the deployment target is lower, there will be an error when adding this plugin
+      with cordova-ios 7 and older by `cordova plugin add`:
       Specs satisfying the `GoogleMaps (~> 10.0.0)` dependency were found, but they required a higher minimum deployment target.
     -->
     <config-file target="config.xml" parent="/*">
@@ -496,7 +497,11 @@
         <source url="https://github.com/CocoaPods/Specs.git"/>
       </config>
       <pods>
-        <pod name="GoogleMaps" spec="~> 10.8.0"/>
+        <!--
+          - Pod will only be used for cordova-ios 7 and older
+          - On cordova-ios 8 and newer the SDK will be added via the Swift Package Manager
+        -->
+        <pod name="GoogleMaps" spec="~> 10.8.0" nospm="true"/>
       </pods>
     </podspec>
 
