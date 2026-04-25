@@ -501,7 +501,7 @@
           - Pod will only be used for cordova-ios 7 and older
           - On cordova-ios 8 and newer the SDK will be added via the Swift Package Manager
         -->
-        <pod name="GoogleMaps" spec="~> 10.8.0" nospm="true"/>
+        <pod name="GoogleMaps" spec="~> 10.12.0" nospm="true"/>
       </pods>
     </podspec>
 
