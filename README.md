@@ -8,11 +8,11 @@
 
 This plugin allows you to display a native Google Maps layer with the Google Maps SDK in your application and uses the following libraries:
 
-| Platform  | Library | Minimum Requirements |
-| ---       | ---     | ---                  |
-| Android   | [Google Maps SDK for Android](https://developers.google.com/maps/documentation/android-sdk):<br>[com.google.android.gms:play-services-maps:20.0.0](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)<br>Location SDK:<br>[com.google.android.gms:play-services-location:21.3.0](https://developers.google.com/android/guides/releases?hl=de#may_29_2024)<br>For accessing the device's location  | - [cordova-android 13](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)<br>- Android 7.0<br> |
-| iOS       | [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/) Version [10.8.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#January_27_2026) | - [cordova-ios 7.0.0](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)<br>- iOS 16.0<br>- XCode 26 |
-| Browser   |[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) | |
+| Platform  | Library | Minimum Requirements | Notes |
+| ---       | ---     | ---                  | ---   |
+| Android   | [Google Maps SDK for Android](https://developers.google.com/maps/documentation/android-sdk):<br>[com.google.android.gms:play-services-maps:20.0.0](https://developers.google.com/android/guides/releases?hl=de#january_14_2026)<br>Location SDK:<br>[com.google.android.gms:play-services-location:21.3.0](https://developers.google.com/android/guides/releases?hl=de#may_29_2024)<br>For accessing the device's location  | - [cordova-android 13](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)<br>- Android 7.0<br> | |
+| iOS       | [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios-sdk/) Version [10.8.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#January_27_2026) | - [cordova-ios 7.0.0](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)<br>- iOS 16.0<br>- XCode 26 | - cordova-ios 7 will use CocoaPods ([deprecated](https://blog.cocoapods.org/CocoaPods-Specs-Repo/))<br>- cordova-ios 8 will use Swift Package Manager (SPM), minimum cordova-ios 8.0.1 is needed |
+| Browser   |[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) | | |
 
 ## Why using Google Maps SDK instead of Google Maps JavaScript API?
 
@@ -74,22 +74,8 @@ You can install a specific version from GitHub if you need a version older than 
 cordova plugin add https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk#v2.9.0
 ```
 
-### iOS
-This plugin uses CocoaPods since Version 2.8.0 to add the Google Maps SDK as a dependency. Since Version `2.9.0` Google Maps SDK for iOS 10.0.0 is used and requires a minimum `deployment-target` of iOS 16. To achieve this, the plugin sets the `deployment-target` to iOS 16.0 in your `config.xml`, but only, if you didn't specify it. iOS 16 is compatible with iPhones from iPhone 8 (from the year 2017) and newer, including iPhone SE (2nd and 3rd generation). Since Google Maps SDK version 7.3.0 it's possible to run the plugin on a simulator on a Mac with a M CPU (Apple Silicon) using the Metal renderer.
+### Upgrade from `cordova-plugin-googlemaps` repository
 
-#### Long installation time with CocoaPods
-The installation can keep a long time when the plugin is installed for iOS, because CocoaPods loads the Google Maps SDK for iOS which can have many hundreds of MBs. It's not an error if you see a long time the message and nothing seems to happen anymore:
-
-```bash
-Cloning into 'cocoapods'...
-````
-
-If this task takes a huge amount of time, you could have a bad internet connection.
-
-#### Migration from CocoaPods to Swift Package Manager in the future
-CocoaPods is deprecated and will be a [read-only respository after 2. December 2026](https://blog.cocoapods.org/CocoaPods-Specs-Repo/). Google will support CocoaPods [till Sommer 2026](https://developers.google.com/maps/documentation/ios-sdk/config#cocoapods). After that, no updates will be published to CocoaPods and instead Swift Package Manager (SPM) has to be used to continue receiving updates. [cordova-ios 8](https://cordova.apache.org/announcements/2025/11/23/cordova-ios-8.0.0.html) supports [Swift Package Manager](https://cordova.apache.org/docs/en/dev/guide/platforms/ios/plugin.html#supporting-swift-package-manager-spm) and the plugin is already compatible with it, but, to not break support with cordova-ios 7, this plugin still uses CocoaPods and will migrate later to Swift Package Manager.
-
-#### Upgrade from `cordova-plugin-googlemaps` repository
 To upgrade from plugin version 2.7.1 from the old reposiotry to Version 2.8.0 or newer of this respository you have to remove the old plugin and old iOS Google Map dependency:
 
 ```bash
@@ -112,13 +98,38 @@ Remove also the follwoing from the `package-lock.json`:
   "dev": true
 },
 ```
+
 After that, you can add this plugin:
 
 ```bash
 cordova plugin add cordova-plugin-google-maps-sdk
 ```
 
-If you get a CocoaPod error, that a compatible version for GoogleMaps couldn't be found:
+### Google Maps SDK for iOS
+
+Google Maps SDK for iOS 10.0.0 is used since plugin version 2.9.0 and requires a minimum `deployment-target` of iOS 16. To achieve this, the plugin sets the `deployment-target` to iOS 16.0 in your `config.xml`, but only, if you didn't specify it. iOS 16 is compatible with iPhones from iPhone 8 (from the year 2017) and newer, including iPhone SE (2nd and 3rd generation). Since Google Maps SDK version 7.3.0 it's possible to run the plugin on a simulator on a Mac with a M CPU (Apple Silicon) using the Metal renderer.
+
+#### Swift Package Manager
+
+Since plugin version 2.9.4 the Google Maps SDK dependency will be managed by Swift Package Manager (SPM) when using cordova-ios 8, but needs minimum cordova-ios 8.0.1 to get this working correctly. If you use cordova-ios 7, CocoaPods will be used, which is [deprecated](#deprecation-of-cocoapods) and will only receive updates until summer 2026.
+
+#### Deprecation of CocoaPods
+
+CocoaPods is deprecated and will be a [read-only respository after 2. December 2026](https://blog.cocoapods.org/CocoaPods-Specs-Repo/). Google will support CocoaPods [till Sommer 2026](https://developers.google.com/maps/documentation/ios-sdk/config#cocoapods). After that, no updates will be published to CocoaPods and instead Swift Package Manager (SPM) has to be used to continue receiving updates. Since plugin version 2.9.4 SPM can be used and using cordova-ios 8.0.1.
+
+#### Long installation time with CocoaPods
+
+If you use cordova-ios 7, which uses the deprecated CocoaPods, the installation can keep a long time when the plugin is installed for iOS, because CocoaPods loads the Google Maps SDK for iOS which can have many hundreds of MBs. It's not an error if you see a long time the message and nothing seems to happen anymore:
+
+```bash
+Cloning into 'cocoapods'...
+```
+
+If this task takes a huge amount of time, you could have a bad internet connection.
+
+#### CocoaPods error when adding the plugin
+
+If you get a CocoaPods error, that a compatible version for GoogleMaps couldn't be found, when adding the plugin:
 
 ```bash
 [!] CocoaPods could not find compatible versions for pod "GoogleMaps":
@@ -126,18 +137,7 @@ If you get a CocoaPod error, that a compatible version for GoogleMaps couldn't b
     GoogleMaps (~> 10.0.0)
 ```
 
-You can update the CocoaPod source repos with `pod repo update` executing it in `platforms/ios` of your Cordova project.
-
-Changelog of Google Maps SDK for iOS versions: https://developers.google.com/maps/documentation/ios-sdk/release-notes
-
-#### Problems with older Google Maps SDK for iOS versions
-
-##### EXC_BAD_ACCESS (KERN_INVALID_ADDRESS) gmscore::vector::TextureAtlasElement::height() const
-Since Google Maps SDK 7.4.0 an `EXC_BAD_ACCESS` could occur on a simulator when using the map and the Metal renderer. This is still an open bug on Google's issue tracker: https://issuetracker.google.com/issues/338162114. When this plugin used Google Maps SDK for iOS version `9.3.0`, the error was reproduceable, but after upgrading to version `10.0.0` the error was not reproduceable on a iOS 18.5 simulator. So maybe this problem is solved.
-
-##### EXC_BAD_ACCESS in glvmRasterOpDepthStencilTest (gmscore::renderer::GLEntity::Draw)
-Happend only on a simulator with iOS 15 since Google Maps SDK 6.0.0 when using OpenGL:
-https://issuetracker.google.com/issues/224584852. Since the minimum `deployment-target` was raised to 16.0 and Metal is used, this no issue anymore.
+You can update the CocoaPods source repos with `pod repo update` executing it in `platforms/ios` of your Cordova project.
 
 ### Setup API-Keys
 
@@ -167,10 +167,12 @@ var map = plugin.google.maps.Map.getMap(div);
 ### Optional variables to be set in `config.xml`
 
 #### Android
+
 - `GOOGLE_MAPS_PLAY_SERVICES_VERSION`: Defaults to `20.0.0`
 - `GOOGLE_MAPS_PLAY_SERVICES_LOCATION_VERSION`: Defaults to `21.3.0`
 
 #### iOS
+
 - `LOCATION_WHEN_IN_USE_DESCRIPTION`: This message is displayed when your application requests location permission for only necessary times.
 - `LOCATION_ALWAYS_USAGE_DESCRIPTION`: This message is displayed when your application requests location permission for always.
 
