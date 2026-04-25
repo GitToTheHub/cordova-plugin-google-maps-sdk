@@ -111,11 +111,11 @@ Google Maps SDK for iOS 10.0.0 is used since plugin version 2.9.0 and requires a
 
 #### Swift Package Manager
 
-Since plugin version 2.9.4 the Google Maps SDK dependency will be managed by Swift Package Manager (SPM) when using cordova-ios 8, but needs minimum cordova-ios 8.0.1 to get this working correctly. If you use cordova-ios 7, CocoaPods will be used, which is [deprecated](#deprecation-of-cocoapods) and will only receive updates until summer 2026.
+Since plugin version 3.0.0 the Google Maps SDK dependency will be managed by Swift Package Manager (SPM) when using cordova-ios 8, but needs minimum cordova-ios 8.0.1 to get this working correctly. If you use cordova-ios 7, CocoaPods will be used, which is [deprecated](#deprecation-of-cocoapods) and will only receive updates until summer 2026.
 
 #### Deprecation of CocoaPods
 
-CocoaPods is deprecated and will be a [read-only respository after 2. December 2026](https://blog.cocoapods.org/CocoaPods-Specs-Repo/). Google will support CocoaPods [till Sommer 2026](https://developers.google.com/maps/documentation/ios-sdk/config#cocoapods). After that, no updates will be published to CocoaPods and instead Swift Package Manager (SPM) has to be used to continue receiving updates. Since plugin version 2.9.4 SPM can be used and using cordova-ios 8.0.1.
+CocoaPods is deprecated and will be a [read-only respository after 2. December 2026](https://blog.cocoapods.org/CocoaPods-Specs-Repo/). Google will support CocoaPods [till Sommer 2026](https://developers.google.com/maps/documentation/ios-sdk/config#cocoapods). After that, no updates will be published to CocoaPods and instead Swift Package Manager (SPM) has to be used to continue receiving updates. Since plugin version 3.0.0 SPM can be used and using cordova-ios 8.0.1.
 
 #### Long installation time with CocoaPods
 
