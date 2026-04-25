@@ -13,6 +13,10 @@
 
 ### iOS
 
+- Feat: use SPM (Swift Package Manager) for Google Maps SDK since cordova-ios 8
+  - When using cordova-ios 8 SPM (Swift Package Manager) will be used to use the Google Maps SDK dependency instead of CocoaPods
+  - To get this working correctly minimum cordova-ios 8.0.1 has to be used
+  - When using cordova-ios 7 CocoaPods will still be used
 - Fix: Load custom marker icons from `app://localhost`
   - Works only if `hostname` is not something different than `localhost` in `config.xml`
 - Update Google Maps SDK from 10.7.0 to 10.8.0
