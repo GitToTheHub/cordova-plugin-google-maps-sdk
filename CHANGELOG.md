@@ -2,6 +2,11 @@
 
 ## Version 3.0.1-dev
 
+### iOS
+
+- Update Google Maps SDK from 10.12.0 to [10.14.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#May_29_2026)
+  - Optimized the underlying map styling data to improve load latency and reduce initial data payload. This optimization ensures a more efficient startup experience for apps.
+
 ## Version 3.0.0
 
 ### Android
