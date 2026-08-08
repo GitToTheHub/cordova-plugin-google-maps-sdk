@@ -2,7 +2,10 @@
 
 ## Version 3.0.2-dev
 
-No changes yet
+### iOS
+
+- Update Google Maps SDK from 10.15.0 to [11.0.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#August_06_2026)
+  - This version deprecates CocoaPods. This and future versions will only be supported by Swift Package Manager (SPM). CocoaPods will stay on 10.15.0. Other changes are not mentioned by Google.
 
 ## Version 3.0.1
 
