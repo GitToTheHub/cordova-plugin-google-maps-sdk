@@ -500,8 +500,10 @@
         <!--
           - Pod will only be used for cordova-ios 7 and older
           - On cordova-ios 8 and newer the SDK will be added via the Swift Package Manager
+          - Version 10.15.0 is the last version of the Google Maps SDK which supports CocoaPods.
+            After that, Swift Package Manager has to be used to use recent versions.
         -->
-        <pod name="GoogleMaps" spec="~> 10.14.0" nospm="true"/>
+        <pod name="GoogleMaps" spec="~> 10.15.0" nospm="true"/>
       </pods>
     </podspec>
 

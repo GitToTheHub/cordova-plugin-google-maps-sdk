@@ -4,8 +4,9 @@
 
 ### iOS
 
-- Update Google Maps SDK from 10.12.0 to [10.14.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#May_29_2026)
-  - Optimized the underlying map styling data to improve load latency and reduce initial data payload. This optimization ensures a more efficient startup experience for apps.
+- Update Google Maps SDK from 10.12.0 to [10.15.0](https://developers.google.com/maps/documentation/ios-sdk/release-notes#June_24_2026)
+  - This is the last Google Maps SDK which supports CocoaPods. If you want to use recent versions of the Google Maps SDK, you have to migrate to Swift Package Manager, which this plugin supports since version `3.0.0` in combination with `cordova-ios` minimum version `8.0.1`.
+  - Notable change in this SDK update: Optimized the underlying map styling data to improve load latency and reduce initial data payload. This optimization ensures a more efficient startup experience for apps.
 
 ## Version 3.0.0
 
