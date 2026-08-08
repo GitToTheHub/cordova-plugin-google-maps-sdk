@@ -1,6 +1,6 @@
 # ChangeLog
 
-## Version 3.0.2-dev
+## Version 3.0.2
 
 ### iOS
 
