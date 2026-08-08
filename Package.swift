@@ -11,7 +11,7 @@ let package = Package(
     dependencies: [
         // This must be included as a dependency, with this format for it to work.
         .package(url: "https://github.com/apache/cordova-ios.git", branch: "master"),
-        .package(url: "https://github.com/googlemaps/ios-maps-sdk", exact: "10.15.0")
+        .package(url: "https://github.com/googlemaps/ios-maps-sdk", exact: "11.0.0")
     ],
     targets: [
         .target(
