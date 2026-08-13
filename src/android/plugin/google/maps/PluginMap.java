@@ -458,6 +458,11 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
                 PluginMap.this.resizeMap(args, new PluginUtil.MyCallbackContext("dummy-" + map.hashCode(), webView) {
                   @Override
                   public void onResult(PluginResult pluginResult) {
+                    if (mapView == null || map == null) {
+                      // map removed before initialization is finished
+                      callbackContext.success();
+                      return;
+                    }
 
                     if (initCameraBounds != null) {
                       map.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
