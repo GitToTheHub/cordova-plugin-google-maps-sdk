@@ -2,7 +2,12 @@
 
 ## Version 3.0.3-dev
 
-No changes yet
+### Android
+
+- Fix: Prevent an `ArrayIndexOutOfBoundsException` in `PluginMarker.clear()` when background tasks update the object cache concurrently.
+  - Synchronize cache access and use stable snapshots of object keys during cleanup.
+  - Fixes [Issue #30](https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/issues/30).
+- Fix: Prevent intermittent crashes during map initialization by checking whether `mapView` and `map` are null (PR [#29](https://github.com/GitToTheHub/cordova-plugin-google-maps-sdk/pull/29)).
 
 ## Version 3.0.2
 

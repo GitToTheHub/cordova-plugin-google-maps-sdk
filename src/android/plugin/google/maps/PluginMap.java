@@ -3038,7 +3038,7 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
             //pluginEntry = plugins.get(pluginName);
             //myPlugin = (MyPlugin) pluginEntry.plugin;
             if (objects.size() > 0) {
-              keys = objects.keys.toArray(new String[objects.size()]);
+              keys = objects.getKeys().toArray(new String[0]);
               for (j = 0; j < keys.length; j++) {
                 key = keys[j];
                 if (key.contains("marker")) {

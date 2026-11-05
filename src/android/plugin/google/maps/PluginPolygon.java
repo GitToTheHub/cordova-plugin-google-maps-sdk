@@ -139,7 +139,7 @@ public class PluginPolygon extends MyPlugin implements MyPluginInterface  {
         cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Set<String> keySet = pluginMap.objects.keys;
+                Set<String> keySet = pluginMap.objects.getKeys();
                 if (keySet.size() > 0) {
                   String[] objectIdArray = keySet.toArray(new String[keySet.size()]);
 
