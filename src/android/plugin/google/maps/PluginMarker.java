@@ -67,7 +67,7 @@ public class PluginMarker extends MyPlugin implements MyPluginInterface {
     cordova.getActivity().runOnUiThread(new Runnable() {
       @Override
       public void run() {
-        Set<String> keySet = pluginMap.objects.keys;
+        Set<String> keySet = pluginMap.objects.getKeys();
         if (keySet.size() > 0) {
           String[] objectIdArray = keySet.toArray(new String[keySet.size()]);
 
@@ -153,7 +153,7 @@ public class PluginMarker extends MyPlugin implements MyPluginInterface {
       // clean up properties as much as possible
       //--------------------------------------
       cordova.getActivity().runOnUiThread(() -> {
-        Set<String> keySet = pluginMap.objects.keys;
+        Set<String> keySet = pluginMap.objects.getKeys();
         if (keySet.size() > 0) {
           String[] objectIdArray = keySet.toArray(new String[keySet.size()]);
 
@@ -164,8 +164,10 @@ public class PluginMarker extends MyPlugin implements MyPluginInterface {
                 !objectId.startsWith("marker_imageSize") &&
                 !objectId.startsWith("marker_icon_")) {
                 Marker marker = (Marker) pluginMap.objects.remove(objectId);
-                marker.setTag(null);
-                marker.remove();
+                if (marker != null) {
+                  marker.setTag(null);
+                  marker.remove();
+                }
                 marker = null;
               } else {
                 Object object = pluginMap.objects.remove(objectId);
